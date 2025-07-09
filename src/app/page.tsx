@@ -3,6 +3,7 @@
 import { NeynarChannel } from "@/lib/api/types";
 import { useNeynarContext } from "@neynar/react";
 import { X402FeedList } from "@/components/X402ForYouFeed";
+import { WalletBalance } from "@/components/WalletBalance";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -43,6 +44,7 @@ export default function Home() {
       )}
 
       <div className="ml-40 flex flex-col gap-6">
+        <WalletBalance />
         <X402FeedList
           fid={user?.fid || 14206}  // Default to FID 14206 if not logged in
           limit={25}

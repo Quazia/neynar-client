@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createWalletClient, http, publicActions } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
-import { mainnet } from 'viem/chains';
+import { base } from 'viem/chains';
 import { withPaymentInterceptor } from 'x402-axios';
 
 let x402Client: any = null;
@@ -39,13 +39,13 @@ function createX402Client() {
     // Log wallet information immediately
     console.log('💰 x402 Wallet Setup:');
     console.log(`  📍 Address: ${account.address}`);
-    console.log(`  🌐 Network: ${mainnet.name} (Chain ID: ${mainnet.id})`);
-    console.log(`  🔗 RPC: ${mainnet.rpcUrls.default.http[0]}`);
+    console.log(`  🌐 Network: ${base.name} (Chain ID: ${base.id})`);
+    console.log(`  🔗 RPC: ${base.rpcUrls.default.http[0]}`);
     console.log(`  🔑 Private Key: ${formattedPrivateKey.substring(0, 6)}...${formattedPrivateKey.substring(formattedPrivateKey.length - 4)}`);
     
-    // Create wallet client for x402 payments on mainnet
+    // Create wallet client for x402 payments on Base network
     const walletClient = createWalletClient({
-      chain: mainnet,
+      chain: base,
       transport: http(),
       account,
     }).extend(publicActions);
@@ -80,7 +80,7 @@ function createX402Client() {
       (error) => {
         console.error('❌ x402 API Error:');
         console.error(`  📍 Wallet Address: ${account.address}`);
-        console.error(`  🌐 Network: ${mainnet.name} (Chain ID: ${mainnet.id})`);
+        console.error(`  🌐 Network: ${base.name} (Chain ID: ${base.id})`);
         console.error(`  🔗 Endpoint: ${error.config?.url || 'unknown'}`);
         console.error(`  📝 Status: ${error.response?.status || 'no response'}`);
         console.error(`  💥 Message: ${error.message}`);
@@ -99,8 +99,8 @@ function createX402Client() {
   } catch (error) {
     console.error('❌ Failed to create x402 client:');
     console.error(`  🔑 Private Key: ${formattedPrivateKey.substring(0, 6)}...${formattedPrivateKey.substring(formattedPrivateKey.length - 4)}`);
-    console.error(`  🌐 Network: ${mainnet.name} (Chain ID: ${mainnet.id})`);
-    console.error(`  🔗 RPC: ${mainnet.rpcUrls.default.http[0]}`);
+    console.error(`  🌐 Network: ${base.name} (Chain ID: ${base.id})`);
+    console.error(`  🔗 RPC: ${base.rpcUrls.default.http[0]}`);
     console.error(`  💥 Error: ${error}`);
     throw error;
   }
