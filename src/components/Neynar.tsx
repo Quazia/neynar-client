@@ -1,5 +1,7 @@
 "use client";
 
-import { NeynarProfileCard, NeynarFeedList } from "@neynar/react";
+import { NeynarProfileCard } from "@neynar/react";
 
-export { NeynarProfileCard, NeynarFeedList };
+// Note: Keeping NeynarProfileCard as it may work without API key
+// Removed NeynarFeedList - replaced with X402FeedList
+export { NeynarProfileCard };

@@ -1,5 +1,4 @@
-import { NeynarAPIClient } from "@neynar/nodejs-sdk";
+// This file has been replaced with x402Client.ts and API services
+// The Neynar SDK client is no longer needed as we use direct API calls with x402
 
-const neynarClient = new NeynarAPIClient(process.env.NEYNAR_API_KEY!);
-
-export default neynarClient;
+export default null;

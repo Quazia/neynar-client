@@ -1,8 +1,9 @@
-import { NeynarProfileCard, NeynarFeedList } from "@/components/Neynar";
-import neynarClient from "@/lib/neynarClient";
+import { NeynarProfileCard } from "@/components/Neynar";
+import { X402FeedList } from "@/components/X402Feed";
+import { UserService } from "@/lib/api";
 
 async function getData(username: string) {
-  const user = await neynarClient.lookupUserByUsername(username);
+  const user = await UserService.lookupUserByUsername(username);
 
   return { user: user.result.user };
 }
@@ -18,11 +19,9 @@ export default async function Page({
     <main className="flex min-h-screen w-full flex-col items-center justify-between p-24">
       <NeynarProfileCard fid={user.fid} />
       <div className="mt-4 flex items-center">
-        <NeynarFeedList
-          feedType="filter"
+        <X402FeedList
+          feedType="following"
           fid={user.fid}
-          fids={`${user.fid}`}
-          withRecasts={false}
           limit={50}
         />
       </div>
