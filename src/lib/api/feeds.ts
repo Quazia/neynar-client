@@ -1,5 +1,5 @@
 import x402Client from '../x402Client';
-import { NeynarFeed, FeedParams } from './types';
+import { NeynarFeed } from './types';
 
 export class FeedService {
   /**
@@ -79,33 +79,6 @@ export class FeedService {
       return response.data;
     } catch (error) {
       console.error('Failed to fetch channel feed:', error);
-      throw error;
-    }
-  }
-
-  /**
-   * Generic feed method
-   */
-  static async getFeed(params: FeedParams): Promise<NeynarFeed> {
-    try {
-      const queryParams = new URLSearchParams();
-      
-      if (params.limit) queryParams.append('limit', params.limit.toString());
-      if (params.cursor) queryParams.append('cursor', params.cursor);
-      if (params.fid) queryParams.append('fid', params.fid.toString());
-      if (params.fids) queryParams.append('fids', params.fids);
-      if (params.channel_id) queryParams.append('channel_id', params.channel_id);
-      if (params.filter_type) queryParams.append('filter_type', params.filter_type);
-      if (params.with_recasts !== undefined) queryParams.append('with_recasts', params.with_recasts.toString());
-      if (params.viewer_fid) queryParams.append('viewer_fid', params.viewer_fid.toString());
-
-      const response = await x402Client().get(`/farcaster/feed`, {
-        params: Object.fromEntries(queryParams),
-      });
-
-      return response.data;
-    } catch (error) {
-      console.error('Failed to fetch feed:', error);
       throw error;
     }
   }

@@ -64,17 +64,6 @@ export interface NeynarChannelsResponse {
 }
 
 // API Request/Response types
-export interface FeedParams {
-  limit?: number;
-  cursor?: string;
-  fid?: number;
-  fids?: string;
-  channel_id?: string;
-  filter_type?: 'global_trending' | 'channel_id';
-  with_recasts?: boolean;
-  viewer_fid?: number;
-}
-
 export interface UserLookupParams {
   username: string;
 }
