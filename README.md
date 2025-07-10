@@ -7,8 +7,12 @@ This is a [Next.js](https://nextjs.org/) project that demonstrates integrating w
 - 🔥 **x402 Integration**: Uses x402-axios for micropayments to Neynar API
 - 🌐 **Base Network**: All wallet operations on Base (Chain ID: 8453)
 - 📱 **Farcaster Feed**: Displays personalized "For You" feed for any FID
-- 💰 **Wallet Balance**: Shows ETH balance on Base network
-- 🔒 **Server-side Security**: Private keys never exposed to client
+- 💰 **Wallet Balance**: Shows ETH balance on Base network with visual status indicators
+- � **User Discovery**: Advanced user lookup with suggested popular users and instant results
+- 📺 **Channel Explorer**: Rich channel display with follower stats, descriptions, and visual enhancements
+- 🎨 **Modern UI**: Beautiful gradient design with responsive layout and interactive elements
+- �🔒 **Server-side Security**: Private keys never exposed to client
+- ⚡ **Real-time Demo**: Interactive showcase of x402 payment flows
 
 ## Prerequisites
 
@@ -59,18 +63,26 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### API Routes
 - `/api/feed/for-you` - Fetches personalized Farcaster feed via x402
-- `/api/wallet/balance` - Shows wallet balance on Base network
-- `/api/channels` - Channel-related operations
+- `/api/wallet/balance` - Shows wallet balance on Base network with status indicators
+- `/api/channels` - Channel-related operations with user channel discovery
+- `/api/users/lookup` - User search and profile discovery via x402
 
 ### Components
 - `X402ForYouFeed` - Displays the "For You" feed with x402 integration
-- `WalletBalance` - Shows wallet balance and network info
+- `WalletBalance` - Enhanced wallet display with balance warnings and visual status
+- `UserLookup` - Advanced user search with suggested users and integrated channel display
+- `UserChannels` - Rich channel explorer with stats, images, and interactive elements
 - Server-side x402 client with comprehensive logging
 
 ## Default Behavior
+- Hero section showcases x402 capabilities with feature highlights
+- Interactive user lookup with suggested popular users (dwr, vitalik.eth, jessepollak, etc.)
+- Enhanced channel explorer with rich visual elements and statistics
 - If no user is logged in, shows "For You" feed for FID 14206
-- Displays wallet balance and network information
-- Logs all x402 payment flows for debugging
+- Displays wallet balance with visual status indicators and low balance warnings
+- Featured user channels showcase (Dan Romero, Dwr, Jesse Pollak, Farcaster Official)
+- Comprehensive x402 payment flow logging for debugging
+- Responsive design that works on desktop, tablet, and mobile
 
 ## Adding New x402 APIs
 
