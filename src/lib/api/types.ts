@@ -54,9 +54,7 @@ export interface NeynarFeed {
 }
 
 export interface NeynarUserResponse {
-  result: {
-    user: NeynarUser;
-  };
+  user: NeynarUser;
 }
 
 export interface NeynarChannelsResponse {

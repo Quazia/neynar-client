@@ -29,8 +29,8 @@ export function UserLookup() {
       }
 
       const data = await response.json();
-      setUser(data.result.user);
-      console.log(`✅ User lookup successful via x402:`, data.result.user);
+      setUser(data.user);
+      console.log(`✅ User lookup successful via x402:`, data.user);
     } catch (err) {
       console.error('Failed to lookup user:', err);
       setError(err instanceof Error ? err.message : 'Failed to lookup user');

@@ -5,7 +5,7 @@ import { UserService } from "@/lib/api";
 async function getData(username: string) {
   const user = await UserService.lookupUserByUsername(username);
 
-  return { user: user.result.user };
+  return { user: user.user };
 }
 
 export default async function Page({
