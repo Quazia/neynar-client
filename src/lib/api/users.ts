@@ -22,13 +22,14 @@ export class UserService {
   /**
    * Get user by FID
    */
-  static async getUserByFid(fid: number): Promise<NeynarUser> {
+  static async getUserByFid(fid: number): Promise<NeynarUserResponse> {
     try {
       const response = await x402Client().get(`/farcaster/user`, {
         params: { fid },
       });
 
-      return response.data.user;
+      // Ensure the response has the same format as username lookup
+      return { user: response.data.user || response.data };
     } catch (error) {
       console.error('Failed to get user by FID:', error);
       throw error;

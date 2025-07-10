@@ -1,4 +1,4 @@
-"use client";import { useNeynarContext } from "@neynar/react";import { X402FeedList } from "@/components/X402ForYouFeed";import { WalletBalance } from "@/components/WalletBalance";import { UserChannels } from "@/components/UserChannels";import { UserLookup } from "@/components/UserLookup";export default function Home() {  const { user } = useNeynarContext();  return (    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">      <div className="container mx-auto px-4 py-8">        {/* Hero Section */}        <div className="mb-12 text-center">          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">            <span>⚡</span>            <span>Powered by x402 Micropayments</span>          </div>          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">            Neynar x402 Feed Client          </h1>          <p className="text-xl text-gray-400 max-w-2xl mx-auto">            Explore Farcaster with seamless API integration and x402 micropayments on the Base Network          </p>        </div>        {/* Feature Showcase Header */}        <div className="mb-8">          <h2 className="text-3xl font-bold mb-4 text-center">🌟 Featured Capabilities</h2>          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">            <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-4 text-center">              <div className="text-2xl mb-2">🔍</div>              <h3 className="font-semibold mb-1">User Discovery</h3>              <p className="text-sm text-blue-100">Search any Farcaster user instantly</p>            </div>            <div className="bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg p-4 text-center">              <div className="text-2xl mb-2">📺</div>              <h3 className="font-semibold mb-1">Channel Explorer</h3>              <p className="text-sm text-purple-100">Browse user channels with rich stats</p>            </div>            <div className="bg-gradient-to-r from-green-600 to-green-700 rounded-lg p-4 text-center">              <div className="text-2xl mb-2">⚡</div>              <h3 className="font-semibold mb-1">x402 Payments</h3>              <p className="text-sm text-green-100">Micropayments on Base Network</p>            </div>          </div>        </div>
+"use client";import { useNeynarContext } from "@neynar/react";import { WalletBalance } from "@/components/WalletBalance";import { UserChannels } from "@/components/UserChannels";import { UserLookup } from "@/components/UserLookup";import { InteractiveFeed } from "@/components/InteractiveFeed";export default function Home() {  const { user } = useNeynarContext();  return (    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">      <div className="container mx-auto px-4 py-8">        {/* Hero Section */}        <div className="mb-12 text-center">          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">            <span>⚡</span>            <span>Powered by x402 Micropayments</span>          </div>          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">            Neynar x402 Feed Client          </h1>          <p className="text-xl text-gray-400 max-w-2xl mx-auto">            Explore Farcaster with seamless API integration and x402 micropayments on the Base Network          </p>        </div>        {/* Feature Showcase Header */}        <div className="mb-8">          <h2 className="text-3xl font-bold mb-4 text-center">🌟 Featured Capabilities</h2>          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">            <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-4 text-center">              <div className="text-2xl mb-2">🔍</div>              <h3 className="font-semibold mb-1">User Discovery</h3>              <p className="text-sm text-blue-100">Search any Farcaster user instantly</p>            </div>            <div className="bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg p-4 text-center">              <div className="text-2xl mb-2">📺</div>              <h3 className="font-semibold mb-1">Channel Explorer</h3>              <p className="text-sm text-purple-100">Browse user channels with rich stats</p>            </div>            <div className="bg-gradient-to-r from-orange-600 to-orange-700 rounded-lg p-4 text-center">              <div className="text-2xl mb-2">🎯</div>              <h3 className="font-semibold mb-1">Feed Explorer</h3>              <p className="text-sm text-orange-100">View any user's personalized feed</p>            </div>            <div className="bg-gradient-to-r from-green-600 to-green-700 rounded-lg p-4 text-center">              <div className="text-2xl mb-2">⚡</div>              <h3 className="font-semibold mb-1">x402 Payments</h3>              <p className="text-sm text-green-100">Micropayments on Base Network</p>            </div>          </div>        </div>
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
           {/* Left Column - User Tools & Wallet */}
           <div className="xl:col-span-1 space-y-6">
@@ -14,34 +14,9 @@
             )}
           </div>
 
-          {/* Middle Column - Main Feed */}
+          {/* Middle Column - Interactive Feed */}
           <div className="xl:col-span-2">
-            <div className="bg-gray-800 rounded-xl p-6 border border-gray-700 shadow-xl">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold">For You Feed</h2>
-                <div className="flex items-center gap-2">
-                  <span className="bg-green-600 text-green-100 px-3 py-1 rounded-full text-sm font-medium">
-                    🔥 Live via x402
-                  </span>
-                  <span className="bg-blue-600 text-blue-100 px-3 py-1 rounded-full text-sm font-medium">
-                    Base Network
-                  </span>
-                </div>
-              </div>
-              
-              <X402FeedList
-                fid={user?.fid || 14206}
-                limit={25}
-              />
-              
-              {!user && (
-                <div className="mt-4 bg-gradient-to-r from-blue-900 to-blue-800 border border-blue-700 rounded-lg p-4">
-                  <p className="text-blue-100 text-sm flex items-center gap-2">
-                    ℹ️ Showing feed for FID 14206 • Sign in with Neynar for your personalized feed
-                  </p>
-                </div>
-              )}
-            </div>
+            <InteractiveFeed initialFid={3} />
           </div>
 
           {/* Right Column - Demo Channels */}
@@ -74,7 +49,7 @@
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold mb-4">🚀 Try it Live!</h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
-                Experience the power of x402 micropayments. Search for any Farcaster user or explore channel memberships - all powered by seamless blockchain transactions.
+                Experience the power of x402 micropayments. The main feed above is fully interactive - try different FIDs to explore any user's personalized feed, all powered by seamless blockchain transactions.
               </p>
             </div>
             
@@ -114,6 +89,16 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Feed Explorer Section */}
+        <div className="mt-12">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold mb-4">🎯 Explore Any User's Feed</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Enter any FID to view personalized "For You" feeds. See how different users experience Farcaster with x402-powered API calls.
+            </p>
           </div>
         </div>
 
