@@ -1,10 +1,11 @@
 import { UserService } from "@/lib/api";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+export const dynamic = 'force-dynamic';
+
+export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
-    const username = searchParams.get('username');
+    const username = request.nextUrl.searchParams.get('username');
     
     if (!username) {
       return NextResponse.json({ error: 'Username parameter is required' }, { status: 400 });

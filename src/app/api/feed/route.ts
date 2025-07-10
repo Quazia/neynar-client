@@ -1,14 +1,15 @@
 import { FeedService } from "@/lib/api";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (req: Request) => {
+export const dynamic = 'force-dynamic';
+
+export const GET = async (request: NextRequest) => {
   try {
-    const { searchParams } = new URL(req.url);
-    const feedType = searchParams.get("feedType");
-    const fid = searchParams.get("fid");
-    const channelId = searchParams.get("channelId");
-    const viewerFid = searchParams.get("viewerFid");
-    const limit = searchParams.get("limit");
+    const feedType = request.nextUrl.searchParams.get("feedType");
+    const fid = request.nextUrl.searchParams.get("fid");
+    const channelId = request.nextUrl.searchParams.get("channelId");
+    const viewerFid = request.nextUrl.searchParams.get("viewerFid");
+    const limit = request.nextUrl.searchParams.get("limit");
 
     let feed;
     switch (feedType) {

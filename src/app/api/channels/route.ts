@@ -1,10 +1,11 @@
 import { ChannelService } from "@/lib/api";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (req: Request) => {
+export const dynamic = 'force-dynamic';
+
+export const GET = async (request: NextRequest) => {
   try {
-    const { searchParams } = new URL(req.url);
-    const fidParam = searchParams.get("fid");
+    const fidParam = request.nextUrl.searchParams.get("fid");
 
     if (!fidParam) {
       return NextResponse.json(

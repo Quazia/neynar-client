@@ -1,13 +1,14 @@
 import { FeedService } from "@/lib/api";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (req: Request) => {
+export const dynamic = 'force-dynamic';
+
+export const GET = async (request: NextRequest) => {
   try {
-    const { searchParams } = new URL(req.url);
-    const fid = searchParams.get("fid");
-    const limit = searchParams.get("limit");
-    const cursor = searchParams.get("cursor");
-    const viewer_fid = searchParams.get("viewer_fid");
+    const fid = request.nextUrl.searchParams.get("fid");
+    const limit = request.nextUrl.searchParams.get("limit");
+    const cursor = request.nextUrl.searchParams.get("cursor");
+    const viewer_fid = request.nextUrl.searchParams.get("viewer_fid");
 
     if (!fid) {
       return NextResponse.json(
