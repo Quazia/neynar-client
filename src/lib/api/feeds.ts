@@ -16,7 +16,16 @@ export class FeedService {
       if (cursor) params.cursor = cursor;
       if (viewerFid) params.viewer_fid = viewerFid;
 
-      console.log('🔥 Making x402 request to For You feed with params:', params);
+      console.log('\n� === FEED SERVICE: FOR YOU FEED ===');
+      console.log('🎯 Initiating For You feed request:');
+      console.log(`  👤 FID: ${fid}`);
+      console.log(`  📊 Limit: ${limit}`);
+      console.log(`  🔍 Cursor: ${cursor || 'None (first page)'}`);
+      console.log(`  👁️ Viewer FID: ${viewerFid || 'None'}`);
+      console.log(`  🌐 Endpoint: /farcaster/feed/for_you`);
+      console.log(`  💳 Payment: x402 micropayment will be required`);
+      console.log(`  ⏰ Request Time: ${new Date().toISOString()}`);
+      console.log('═══════════════════════════════\n');
 
       // This will trigger x402 flow: GET → 402 → sign → retry → 200
       // Hitting the correct For You feed endpoint
@@ -25,10 +34,24 @@ export class FeedService {
         params,
       });
 
-      console.log('✅ For You feed response received:', response.data);
+      console.log('\n🎉 === FEED SERVICE: SUCCESS ===');
+      console.log('✅ For You feed retrieved successfully:');
+      console.log(`  📊 Casts returned: ${response.data.casts?.length || 0}`);
+      console.log(`  🔄 Next cursor: ${response.data.next?.cursor || 'None'}`);
+      console.log(`  📏 Response size: ${JSON.stringify(response.data).length} characters`);
+      console.log(`  ⏰ Completion Time: ${new Date().toISOString()}`);
+      console.log('═══════════════════════════════\n');
+      
       return response.data;
     } catch (error) {
-      console.error('❌ Failed to fetch For You feed:', error);
+      console.log('\n❌ === FEED SERVICE: ERROR ===');
+      console.error('💥 Failed to fetch For You feed:');
+      console.error(`  👤 FID: ${fid}`);
+      console.error(`  📊 Limit: ${limit}`);
+      console.error(`  🔍 Cursor: ${cursor || 'None'}`);
+      console.error(`  🔴 Error: ${error}`);
+      console.error(`  ⏰ Error Time: ${new Date().toISOString()}`);
+      console.log('═══════════════════════════════\n');
       throw error;
     }
   }
