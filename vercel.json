@@ -1,0 +1,16 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "env": {
+    "PRIVATE_KEY": "@private_key",
+    "NEXT_PUBLIC_NEYNAR_CLIENT_ID": "@neynar_client_id"
+  },
+  "functions": {
+    "src/app/api/**/*.ts": {
+      "maxDuration": 30
+    }
+  },
+  "regions": ["iad1"]
+}
